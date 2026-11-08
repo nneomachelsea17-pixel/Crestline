@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crestline — Invest with clarity</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="index.css"> 
+
+</head>
+<body>
+<header class="hero bgfx">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">Crest<span>line</span></a>
+      <div class="nl"><a href="#features">Features</a><a href="#how">How it works</a></div>
+      <div class="na">
+        <span id="hello" hidden></span>
+        <a class="btn ghost sm" id="in" href="log in .html">Log in</a>
+        <a class="btn sm" id="up" href="sign in .html">Sign up</a>
+        <button class="btn ghost sm" id="out" hidden>Log out</button>
+      </div>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <h1 class="up">Grow your money with <em>clarity</em>.</h1>
+        <p class="up" style="--d:.12s">Low-cost, diversified portfolios built around your goals, with no hidden fees and no jargon.</p>
+        <div class="cta up" style="--d:.24s"><a class="btn" href="sign in .html">Create free account</a><a class="btn ghost" href="#how">How it works</a></div>
+      </div>
+      <div class="up" style="--d:.3s">
+        <div class="card float">
+          <div style="opacity:.7;font-size:14px">Portfolio value</div>
+          <div class="bal">$48,250.00</div><div class="gain">▲ 12.4% this year</div>
+          <svg viewBox="0 0 300 110" width="100%" role="img" aria-label="Portfolio growth chart" style="margin-top:12px">
+            <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2fd4a1" stop-opacity=".4"/><stop offset="1" stop-color="#2fd4a1" stop-opacity="0"/></linearGradient></defs>
+            <path class="area" d="M0 95 L40 82 L80 88 L120 60 L160 66 L200 38 L240 44 L300 12 L300 110 L0 110Z" fill="url(#g)"/>
+            <path class="line" pathLength="1" d="M0 95 L40 82 L80 88 L120 60 L160 66 L200 38 L240 44 L300 12" fill="none" stroke="#2fd4a1" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="dash" hidden style="padding-top:48px">
+    <h2 id="hi"></h2><p class="sub">Here’s your demo portfolio snapshot.</p>
+    <div class="grid3">
+      <div class="card up"><span class="muted">Balance</span><div class="bal">$12,480.00</div></div>
+      <div class="card up" style="--d:.1s"><span class="muted">Today</span><div class="bal gain" style="font-size:30px">+$86.20</div></div>
+      <div class="card up" style="--d:.2s"><span class="muted">Goal: home deposit</span><div class="pbar"><i style="--w:62%"></i></div><span class="muted">62% funded</span></div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="card up"><b data-n="2.4" data-d="1" data-p="$" data-s="B">$2.4B</b><span>Assets managed</span></div>
+    <div class="card up" style="--d:.1s"><b data-n="0.15" data-d="2" data-s="%">0.15%</b><span>Annual fee</span></div>
+    <div class="card up" style="--d:.2s"><b data-n="180" data-d="0" data-s="k+">180k+</b><span>Investors</span></div>
+  </div>
+
+  <section id="features">
+    <h2 class="up">Everything you need to invest well</h2><p class="sub up">Simple tools that do the heavy lifting.</p>
+    <div class="grid3">
+      <div class="card up"><div class="ico">◎</div><h3>Goal-based portfolios</h3><p>Retirement, a home, or a rainy day fund. Pick a goal and we build the mix.</p></div>
+      <div class="card up" style="--d:.1s"><div class="ico">⟳</div><h3>Auto-rebalancing</h3><p>Your allocation stays on target as markets move, automatically.</p></div>
+      <div class="card up" style="--d:.2s"><div class="ico">%</div><h3>Tax-smart investing</h3><p>Loss harvesting and tax-aware placement help you keep more of your returns.</p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2 class="up">Start in three steps</h2><p class="sub up">Most people finish in under five minutes.</p>
+    <div class="grid3">
+      <div class="card up"><div class="ico">1</div><h3>Create your account</h3><p>Sign up with your email in under a minute.</p></div>
+      <div class="card up" style="--d:.1s"><div class="ico">2</div><h3>Fund and choose a goal</h3><p>Link your bank and pick a portfolio that fits your timeline.</p></div>
+      <div class="card up" style="--d:.2s"><div class="ico">3</div><h3>We do the rest</h3><p>Track progress anytime while your portfolio stays balanced.</p></div>
+    </div>
+  </section>
+
+  <div class="band up"><h2>Ready to put your money to work?</h2><p>Open an account in minutes. No minimums.</p><a class="btn" href="signup.html">Create free account</a></div>
+  <footer>Investing involves risk, including possible loss of principal. Past performance does not guarantee future results. Figures shown are illustrative. © 2026 Crestline.</footer>
+</main>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account — Crestline</title>
+<link rel="stylesheet" href="logs.css">
+</head>
+<body class="auth">
+<div class="bgfx">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div>
+  <div class="in">
+    <a class="logo" href="index.html">Crest<span>line</span></a>
+    <h1 style="margin-top:28px">Start investing with clarity.</h1>
+    <p style="opacity:.8">Create your free account in under a minute. No minimums and no hidden fees.</p>
+  </div>
+</div>
+<main class="formbox">
+  <form id="fs" novalidate>
+    <a class="logo dk" href="index.html">Crest<span>line</span></a>
+    <h2>Create your account</h2><span class="muted">It takes less than a minute.</span>
+    <label for="sn">Full name</label><input id="sn" autocomplete="name" placeholder="Jane Doe">
+    <label for="se">Email</label><input id="se" type="email" autocomplete="email" placeholder="you@email.com">
+    <label for="sp">Password</label>
+    <div class="pw"><input id="sp" type="password" autocomplete="new-password" placeholder="At least 8 characters"><button type="button" class="eye">Show</button></div>
+    <div class="meter"><i id="mi"></i></div><span class="muted" id="ml" style="font-size:12px">Use 8+ characters with numbers and symbols</span>
+    <label for="sc">Confirm password</label><input id="sc" type="password" autocomplete="new-password" placeholder="Repeat password">
+    <label class="chk"><input type="checkbox" id="st"> I agree to the Terms and Privacy Policy</label>
+    <div class="err" id="fse"></div>
+    <button class="btn full" type="submit">Create account</button>
+    <p class="alt">Already have an account? <a href="login.html">Log in</a></p>
+  </form>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
