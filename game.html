@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NAIJA RUN - Game</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        #gameMenu {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        #gameMenu button,
+        #gameOver button,
+        #mobileControls button {
+            padding: 13px 22px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #game {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hud {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            z-index: 5;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        #mobileControls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 10;
+        }
+
+        #gameOver {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .hud {
+                font-size: 13px;
+            }
+
+            #mobileControls button {
+                padding: 15px;
+                font-size: 20px;
+            }
+
+            #gameMenu h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PLAYER MENU -->
+    <div id="gameMenu">
+
+        <h1>🇳🇬 NAIJA RUN</h1>
+
+        <h2 id="welcome"></h2>
+
+        <p>Welcome to the Lagos streets!</p>
+
+        <h3>CHOOSE YOUR RUNNER</h3>
+
+        <button onclick="chooseRunner('Aki')">AKI</button>
+
+        <button onclick="chooseRunner('Pawpaw')">PAWPAW</button>
+
+        <h3 id="selectedRunner">Selected: Aki</h3>
+
+        <button onclick="launchGame()">START RUNNING</button>
+
+        <button onclick="logout()">LOG OUT</button>
+
+    </div>
+
+    <!-- GAME AREA -->
+    <div id="game" style="display:none">
+
+        <div class="hud">
+            <div>🇳🇬 NAIJA RUN</div>
+            <div id="score">SCORE: 0</div>
+            <div id="coins">🪙 0</div>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <!-- MOBILE CONTROLS -->
+        <div id="mobileControls">
+
+            <button onclick="moveLeft()">◀</button>
+
+            <button onclick="moveRight()">▶</button>
+
+            <button onclick="jump()">⬆</button>
+
+            <button onclick="slide()">⬇</button>
+
+        </div>
+
+        <!-- GAME OVER -->
+        <div id="gameOver">
+
+            <h1>GAME OVER!</h1>
+
+            <p id="finalScore"></p>
+
+            <button onclick="launchGame()">PLAY AGAIN</button>
+
+            <button onclick="backToMenu()">MAIN MENU</button>
+
+        </div>
+
+    </div>
+
+    <!-- GAME CONNECTION -->
+    <script>
+
+        // CHECK LOGIN
+        const loggedInUser = sessionStorage.getItem("naijaUser");
+
+        if (!loggedInUser) {
+            window.location.replace("./index.html");
+        } else {
+            document.getElementById("welcome").textContent =
+                "Welcome, " + loggedInUser + "!";
+        }
+
+        // CHARACTER SELECTION
+        let selectedRunner = "Aki";
+
+        window.selectedCharacter = "Aki";
+
+        function chooseRunner(name) {
+
+            selectedRunner = name;
+
+            window.selectedCharacter = name;
+
+            document.getElementById("selectedRunner").textContent =
+                "Selected: " + name;
+
+        }
+
+        // START GAME
+        async function launchGame() {
+
+            window.selectedCharacter = selectedRunner;
+
+            document.getElementById("gameMenu").style.display = "none";
+
+            document.getElementById("game").style.display = "block";
+
+            document.getElementById("gameOver").style.display = "none";
+
+            if (typeof window.startGame === "function") {
+
+                try {
+                    await window.startGame();
+                } catch (error) {
+                    console.error("Game failed to start:", error);
+                    alert("The game could not start. Check the browser Console for the error.");
+                }
+
+            } else {
+
+                console.error("startGame() was not found in game.js");
+
+                alert("Game engine not loaded. Check that game.js is in the same folder.");
+
+            }
+        }
+
+        // RETURN TO MENU
+        function backToMenu() {
+
+            if (typeof window.stopGame === "function") {
+                window.stopGame();
+            }
+
+            document.getElementById("game").style.display = "none";
+
+            document.getElementById("gameMenu").style.display = "flex";
+
+        }
+
+        // LOG OUT
+        function logout() {
+
+            sessionStorage.removeItem("naijaUser");
+
+            window.location.href = "./index.html";
+
+        }
+
+    </script>
+
+    <!-- LOAD GAME ENGINE ONLY ONCE -->
+    <script src="./game.js"></script>
+
+</body>
+</html>
